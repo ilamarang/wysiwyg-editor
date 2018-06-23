@@ -21,7 +21,8 @@
           array('success_action_status' => '201'),
           array('x-requested-with' => 'xhr'),
           array('starts-with', '$key', $keyStart),
-          array('starts-with', '$Content-Type', '') // accept all files
+          array('starts-with', '$Content-Type', ''), // accept all files
+          array('starts-with', '$x-amz-security-token', <session token>)
       )
   )));
 
@@ -169,6 +170,7 @@
             AWSAccessKeyId: '<?php echo $accessKeyId; ?>',
             policy: '<?php echo $policy; ?>',
             signature: '<?php echo $signature; ?>',
+            "x-amz-security-token": S3data.token
           }
         }
       })
